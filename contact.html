@@ -145,7 +145,7 @@
 				<div class="col-md-6">
 					<div class="getintouch">
 						<h3>Get in touch </h3>
-						<form class="contactus-form" id="gform" method="POST" action="https://script.google.com/macros/s/AKfycbyOaAGK0p6MbowveJZAmpvGn-oeqvHVASarW9Y2/exec">
+						<form class="contactus-form" id="contact-form" action="">
 							<div class="row">
 								<div class="col-md-12 col-sm-12 col-xs-12">
 									<div class="form-group">
@@ -283,6 +283,25 @@
   ga('create', 'UA-93973866-1', 'auto');
   ga('send', 'pageview');
 
+</script>
+<script>
+	$("#submit-form").submit((e)=>{
+		e.preventDefault()
+		$.ajax({
+			url:"https://script.google.com/macros/s/AKfycbyOaAGK0p6MbowveJZAmpvGn-oeqvHVASarW9Y2/exec",
+			data:$("#contact-form").serialize(),
+			method:"post",
+			success:function (response){
+				alert("Submitted Successfully. Our Representative Will Contact You As Soon As Possible")
+				window.location.reload()
+				//window.location.href="https://google.com"
+			},
+			error:function (err){
+				alert("Something Error")
+
+			}
+		})
+	})
 </script>
 </body>
 
